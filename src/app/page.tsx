@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Loading from "./components/global/Loading";
-
+import Nav from "./components/global/Nav";
 export default function PageContainer() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,7 +23,7 @@ export default function PageContainer() {
 
   return (
     <main className="w-full overflow-x-hidden scroll-smooth">
-      {/* Your main content goes here */}
+      <Nav />
     </main>
   );
 }
