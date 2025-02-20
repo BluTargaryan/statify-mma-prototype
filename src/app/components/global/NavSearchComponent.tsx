@@ -1,23 +1,32 @@
 import React, { useState } from 'react'
 import { FaSearch } from "react-icons/fa";
-
+import NavSearchPostResults from './NavSearchPostResults';
+import NavSearchPagesResults from './NavSearchPagesResults';
 const NavSearchComponent = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <div className='flex items-center w-56 h-8 gap-5'>
         <FaSearch className='text-2xl'/>
-            <input
+        <input
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setIsSearchActive(true)}
             onBlur={() => setIsSearchActive(false)}
-            type="text" placeholder='Search...' className='w-full h-full bg-transparent focus:outline-none'/>
+            type="text" 
+            placeholder='Search...' 
+            className='w-full h-full bg-transparent focus:outline-none'
+        />
 
-            {isSearchActive && (
-                <div className='absolute right-0 top-28 w-full h-full flex items-center gap-5 bg-bg shadow-lg z-50'>
-                    
-                </div>
-            )}
-      </div>
+        {isSearchActive && searchQuery.trim() !== '' && (
+            <div className='absolute right-0 top-[56px] w-full py-14 flex flex-col items-center gap-14 bg-white shadow-lg z-50 px-4'>
+                <NavSearchPostResults category='Events' searchQuery={searchQuery} />
+                <NavSearchPostResults category='Lists' searchQuery={searchQuery} />
+                <NavSearchPagesResults searchQuery={searchQuery} />
+            </div>
+        )}
+    </div>
   )
 }
 
