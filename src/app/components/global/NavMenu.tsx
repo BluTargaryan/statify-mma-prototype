@@ -19,11 +19,13 @@ const NavMenu = () => {
         }
     }, [isMenuActive]);
 
+    
+
     return (
         <>
             {isMenuActive ? (
                 <MdClose 
-                    className='text-3xl hover:text-secondary active:text-primary'
+                    className='text-3xl hover:text-secondary active:text-primary cursor-pointer'
                     onClick={(e) => {
                         e.stopPropagation();
                         setIsMenuActive(!isMenuActive);
@@ -31,7 +33,7 @@ const NavMenu = () => {
                 />
             ) : (
                 <MdMenu 
-                    className='text-3xl hover:text-secondary active:text-primary '
+                    className='text-3xl hover:text-secondary active:text-primary cursor-pointer'
                     onClick={(e) => {
                         e.stopPropagation();
                         setIsMenuActive(!isMenuActive);
@@ -40,7 +42,10 @@ const NavMenu = () => {
             )}
 
     {isMenuActive && (
-        <div className='absolute left-0 top-[56px] w-full py-14 flex flex-col items-center justify-center gap-5 bg-white shadow-lg z-50'>
+        <div className='absolute left-0 top-[56px] w-full h-screen py-12 flex flex-col items-center gap-12 bg-white shadow-lg
+        overflow-y-scroll scroll-smooth scrollbar-hide
+        md:py-20 md:gap-16 md:text-xl
+        '>
             {Pages.map((page) => (
                 <Link 
                     href={page.href} 

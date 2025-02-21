@@ -22,8 +22,10 @@ export default function PageContainer() {
   }
 
   return (
-    <main className="w-full overflow-x-hidden scroll-smooth h-[10000px]">
-      <Nav />
+    <main className="w-full overflow-x-hidden scroll-smooth px-4 h-[10000px]
+    md:px-10
+    ">
+      
     </main>
   );
 }

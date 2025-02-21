@@ -7,7 +7,9 @@ const NavSearchComponent = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <div className='flex items-center w-56 h-8 gap-5'>
+    <div className='flex items-center w-56 h-8 gap-5
+    md:w-72
+    '>
         <FaSearch className='text-2xl'/>
         <input
             value={searchQuery}
@@ -20,7 +22,10 @@ const NavSearchComponent = () => {
         />
 
         {isSearchActive && searchQuery.trim() !== '' && (
-            <div className='absolute right-0 top-[56px] w-full py-14 flex flex-col items-center gap-14 bg-white shadow-lg z-50 px-4'>
+            <div className='absolute right-0 top-[56px] w-full py-14 h-screen flex flex-col items-center gap-14 bg-white shadow-lg px-4
+            overflow-scroll scroll-smooth scrollbar-hide
+            md:px-10 md:py-14 
+            '>
                 <NavSearchPostResults category='Events' searchQuery={searchQuery} />
                 <NavSearchPostResults category='Lists' searchQuery={searchQuery} />
                 <NavSearchPagesResults searchQuery={searchQuery} />
