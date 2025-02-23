@@ -12,6 +12,7 @@ const NavLogo = () => {
     sizes="100vw"
     className="h-4 w-auto
     md:h-7
+    lg:h-8
     "
     />
     <h1 className={`${notoSerif.className} text-primary font-bold uppercase

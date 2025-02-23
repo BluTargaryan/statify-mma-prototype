@@ -23,6 +23,21 @@ const NavMenu = () => {
 
     return (
         <>
+        <div className='lg:flex hidden gap-6 text-sm'>
+            {Pages.map((page) => (
+                <Link 
+                    href={page.href} 
+                    key={page.id}
+                    className={`${pathname === page.href ? 'font-bold' : 'font-normal'} hover:text-secondary active:text-primary transition-all duration-300`}
+                >
+                    {page.name}
+                </Link>
+            ))}
+                
+                
+
+        </div>
+        < div className='lg:hidden'>
             {isMenuActive ? (
                 <MdClose 
                     className='text-3xl hover:text-secondary active:text-primary cursor-pointer'
@@ -50,13 +65,14 @@ const NavMenu = () => {
                 <Link 
                     href={page.href} 
                     key={page.id}
-                    className={`${pathname === page.href ? 'font-bold' : 'font-normal'}`}
+                    className={`${pathname === page.href ? 'font-bold' : 'font-normal'} hover:text-secondary active:text-primary transition-all duration-300`}
                 >
                     {page.name}
                 </Link>
             ))}
         </div>
     )}
+    </div>
     </>
   )
 }
