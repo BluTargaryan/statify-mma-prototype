@@ -24,7 +24,7 @@ const NavMenu = () => {
     return (
         <>
         <div className='lg:flex hidden gap-6 text-sm'>
-            {Pages.map((page) => (
+            {Pages.slice(0, 5).map((page) => (
                 <Link 
                     href={page.href} 
                     key={page.id}
@@ -61,7 +61,7 @@ const NavMenu = () => {
         overflow-y-scroll scroll-smooth scrollbar-hide
         md:py-20 md:gap-16 md:text-xl
         '>
-            {Pages.map((page) => (
+            {Pages.slice(0, 5).map((page) => (
                 <Link 
                     href={page.href} 
                     key={page.id}

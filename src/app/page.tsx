@@ -29,7 +29,7 @@ export default function PageContainer() {
 
   return (
     <main className="w-full overflow-x-hidden scroll-smooth flex flex-col gap-16 py-8">
-      <div className="w-full flex flex-col gap-16 py-8 border-b">
+      <div className="w-full flex flex-col gap-16 py-8 border-b lg:flex-row lg:gap-8">
         <LatestSection />
         <TrendingSection />
         <TopPostsByCategorySection />
