@@ -1,8 +1,4 @@
 import React from 'react'
-import { FaSquareXTwitter } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa";
-import { FaTiktok } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
 import { NavSocialsData } from "@/app/inAppData/NavSocialsData";
 
 const NavSocialsList = () => {

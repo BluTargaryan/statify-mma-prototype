@@ -1,9 +1,7 @@
 'use client';
-import Image from "next/image";
+
 import { useState, useEffect } from "react";
 import Loading from "./components/global/Loading";
-import Nav from "./components/global/sections/Nav";
-import { notoSerif } from "./utils";
 import LatestSection from "./components/Home/sections/LatestSection";
 import TrendingSection from "./components/Home/sections/TrendingSection";
 import TopPostsByCategorySection from "./components/Home/sections/TopPostsByCategorySection";

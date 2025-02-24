@@ -1,7 +1,6 @@
 import { notoSerif } from '@/app/utils'
 import React from 'react'
 import { Pages } from '@/app/inAppData/pages'
-import Link from 'next/link'
 
 interface NavSearchPagesResultsProps {
   searchQuery: string;
