@@ -5,8 +5,8 @@ import Loading from "./components/global/Loading";
 import LatestSection from "./components/Home/sections/LatestSection";
 import TrendingSection from "./components/Home/sections/TrendingSection";
 import TopPostsByCategorySection from "./components/Home/sections/TopPostsByCategorySection";
-import AdSpace from "./components/Home/sections/AdSpace";
-import HomeCategoryList from "./components/Home/sections/HomeCategoryList";
+import AdSpace from "./components/global/sections/AdSpace";
+import HomeCategoryList from "./components/Home/sections/HomeCategoryList";   
 export default function PageContainer() {
   const [isLoading, setIsLoading] = useState(true);
 

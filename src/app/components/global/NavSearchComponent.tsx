@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FaSearch } from "react-icons/fa";
 import NavSearchPostResults from './NavSearchPostResults';
 import NavSearchPagesResults from './NavSearchPagesResults';
+import Link from 'next/link';
 const NavSearchComponent = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -10,7 +11,9 @@ const NavSearchComponent = () => {
     <div className='flex items-center w-56 h-8 gap-5
     md:w-72
     '>
-        <FaSearch className='text-2xl'/>
+        <Link href={`/search/${searchQuery}`}>
+            <FaSearch className='text-2xl'/>
+        </Link>
         <input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
