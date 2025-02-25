@@ -1,6 +1,4 @@
 import React from 'react'
-import ListPost from '../../Home/localComponents/ListPost'
-import TrendingListPost from '../../Home/localComponents/TrendingListPost'
 import { FaLongArrowAltRight } from 'react-icons/fa'
 import { notoSerif } from '@/app/utils'
 import Link from 'next/link'
