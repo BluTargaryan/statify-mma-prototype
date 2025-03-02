@@ -1,13 +1,18 @@
+'use client'
 import { notoSerif } from '@/app/utils'
 import React from 'react'
 import TrendingImage from './TrendingImage'
+import { useRouter } from 'next/navigation'
 
 const TrendingPost = () => {
+  const router = useRouter()
   return (
-    <div className='w-full flex flex-col gap-5
+    <div className='w-full flex flex-col gap-5 cursor-pointer
     md:flex-row
     lg:flex-col
-    '>
+    '
+    onClick={() => router.push('/article/1')}
+    >
        <TrendingImage />
 
                     <div className='w-full flex flex-col gap-3 justify-center

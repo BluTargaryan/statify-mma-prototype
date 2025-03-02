@@ -1,10 +1,16 @@
+'use client'
+
 import { notoSerif } from '@/app/utils'
 import React from 'react'
 import ListPostImage from './ListPostImage'
+import { useRouter } from 'next/navigation'
 
 const ListPost = () => {
+  const router = useRouter()
   return (
-    <div className='w-full flex flex-col gap-3 md:flex-row-reverse lg:flex-col'>
+    <div className='w-full flex flex-col gap-3 cursor-pointer md:flex-row-reverse lg:flex-col'
+    onClick={() => router.push('/article/1')}
+    >
       <ListPostImage />
         
         <div className='flex flex-col gap-3 md:w-1/2 md:gap-2 lg:w-full'>

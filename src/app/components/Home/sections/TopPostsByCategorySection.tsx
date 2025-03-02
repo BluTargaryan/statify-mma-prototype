@@ -1,10 +1,15 @@
+'use client'
 import { notoSerif } from '@/app/utils'
 import React from 'react'
 import { posts } from '@/app/inAppData/postData'
+import { useRouter } from 'next/navigation'
 
 const TopPostsByCategorySection = () => {
+  const router = useRouter()
   return (
-    <div className='w-full flex flex-col gap-8 lg:w-1/4'>
+    <div className='w-full flex flex-col gap-8 lg:w-1/4 cursor-pointer'
+    onClick={() => router.push('/article/1')}
+    >
     <div className='flex items-center justify-between'>
         <h2 className={`text-xl font-bold ${notoSerif.className}`}>Top Posts by Category</h2>
     </div>

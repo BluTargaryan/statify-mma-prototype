@@ -1,10 +1,16 @@
+'use client'
+
 import React from 'react'
 import { notoSerif } from '@/app/utils'
 import LatestImage from './LatestImage'
+import { useRouter } from 'next/navigation'
 
 const LatestPost = () => {
+  const router = useRouter()
   return (
-    <div className='w-full flex flex-col gap-3 '>
+    <div className='w-full flex flex-col gap-3 cursor-pointer'
+    onClick={() => router.push('/article/1')}
+    >
         
         <LatestImage />
 
