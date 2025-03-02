@@ -7,7 +7,8 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { NavSocialsData } from '@/app/inAppData/NavSocialsData'
 import { Checkbox } from "@/components/ui/checkbox"
-import FooterLogo from '../FooterLogo'  
+import Image from 'next/image'
+import FooterIcon from '../../../footericon.png'
 const Footer = () => {
   const pathname = usePathname()
 
@@ -17,7 +18,15 @@ const Footer = () => {
 
         <div className='w-full flex flex-col gap-16 items-center  md:flex-row md:items-start md:gap-0 md:justify-between'>
 
-        <FooterLogo />
+        <Image src={FooterIcon} alt='Statify-MMA'
+        width="0"
+        height="0"
+        sizes="100vw"
+        className="h-auto w-52
+        md:w-40
+        lg:w-44
+        "
+        />
 
         <div className="w-full gap-7 flex flex-col items-center md:items-start md:w-auto">
       <h3 className={`text-xl font-bold ${notoSerif.className}`}>Pages</h3>

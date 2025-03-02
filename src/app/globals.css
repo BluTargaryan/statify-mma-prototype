@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 
 @layer base {
   :root {
@@ -66,3 +70,44 @@
     @apply bg-background text-foreground;
   }
 }
+
+.richtext-edits {
+  @apply flex flex-col gap-5 lg:gap-9;
+}
+
+.richtext-edits h1 {
+  @apply text-xl font-bold font-noto md:text-2xl;
+}
+
+.richtext-edits h2 {
+  @apply text-xl font-bold font-noto md:text-2xl;
+}
+.richtext-edits h3 {
+  @apply text-xl font-bold font-noto md:text-2xl;
+}
+.richtext-edits h4 {
+  @apply text-xl font-bold font-noto md:text-2xl;
+}
+.richtext-edits h5 {
+  @apply text-xl font-bold font-noto md:text-2xl;
+}
+.richtext-edits h6 {
+  @apply text-xl font-bold font-noto md:text-2xl;
+}
+.richtext-edits blockquote {
+  @apply text-xl font-bold border-l-2 border-text p-3 font-noto lg:text-3xl lg:p-10;
+}
+
+
+.richtext-edits img {
+  @apply w-4/5 h-72 object-cover rounded mx-auto md:h-[526px];
+}
+
+.richtext-edits li {
+  @apply list-disc ml-4;
+}
+
+
+
+
+

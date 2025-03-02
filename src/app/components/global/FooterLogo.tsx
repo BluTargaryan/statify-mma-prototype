@@ -1,13 +1,14 @@
 import { notoSerif } from '@/app/utils'
 import React from 'react'
 import Image from 'next/image'
+import FooterIcon from '../../footericon.png'
 
 const FooterLogo = () => {
     return (
         <div className='statify-logo flex gap-2 items-center shrink-0
         md:gap-4
         '>
-            <Image src='../icon.svg' alt='Statify-MMA'
+            <Image src={FooterIcon} alt='Statify-MMA'
         width="0"
         height="0"
         sizes="100vw"

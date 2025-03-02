@@ -1,12 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
 import { notoSerif } from '@/app/utils'
+import NavIcon from '../../navicon.png'
 const NavLogo = () => {
   return (
     <div className='statify-logo flex gap-2 items-center
     md:gap-4
     '>
-    <Image src='../icon.svg' alt='Statify-MMA'
+    <Image src={NavIcon} alt='Statify-MMA'
     width="0"
     height="0"
     sizes="100vw"

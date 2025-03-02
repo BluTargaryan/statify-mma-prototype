@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description: "Statify-MMA",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{

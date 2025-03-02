@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react'
-import NavLogo from '../../global/NavLogo'
 import NavSocialsList from '../../global/NavSocialsList'
 import NavSearchComponent from '../../global/NavSearchComponent'
 import NavMenu from '../../global/NavMenu'
+import NavIcon from '../../../navicon.png'
+import Image from 'next/image'
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,7 +28,15 @@ const Nav = () => {
         isScrolled ? 'h-0 overflow-hidden' : 'h-14 md:h-16'
       }
       `}>
-        <NavLogo />
+        <Image src={NavIcon} alt='Statify-MMA'
+    width="0"
+    height="0"
+    sizes="100vw"
+    className="h-4 w-auto
+    md:h-7
+    lg:h-8
+    "
+    />
         <NavSocialsList />
       </div>
       <div className='relative w-full h-14 flex items-center justify-between border-b
