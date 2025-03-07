@@ -1,15 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
-const AboutImageTextBox = ({title, text, reversed}: {title: string, text: string, reversed: boolean}) => {
+const AboutImageTextBox = ({title, text, reversed, image}: {title: string, text: string, reversed: boolean, image: string}) => {
   return (
-    <div className={`flex flex-col gap-4 ${reversed ? 'xl:flex-row-reverse' : 'xl:flex-row'} xl:gap-16 xl:items-center`}>
+    <div className={`flex flex-col gap-4 md:w-full ${reversed ? 'xl:flex-row-reverse' : 'xl:flex-row'} xl:gap-16 xl:items-center`}>
      <Image 
-        src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618"
+        src={image}
         alt="Commentators" 
         width={0} 
         height={0} 
         sizes="100vw" 
-        className='w-full h-40 object-cover rounded md:h-40 xl:h-52' 
+        className='w-full h-40 object-cover object-center rounded md:h-40 xl:h-60' 
       />   
       <div className={`flex flex-col gap-2 ${reversed ? 'xl:items-start' : 'xl:items-end'} xl:w-full`}>
         <h3 className={`font-bold font-noto ${reversed ? 'xl:text-left' : 'xl:text-right'} xl:text-xl`}>{title}</h3>

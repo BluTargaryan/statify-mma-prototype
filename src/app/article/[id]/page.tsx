@@ -8,25 +8,10 @@ import CommentComp from '@/app/components/Article/CommentComp'
 import {FaComments} from 'react-icons/fa6'
 import { TiHeartOutline } from 'react-icons/ti'
 import RelatedPosts from '@/app/components/Article/RelatedPosts'
-import Loading from '@/app/components/global/Loading'
   const Article = () => {
   const post = posts[0]
 
-  const [isLoading, setIsLoading] = React.useState(true)
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
-
-    return () => clearTimeout(timer)
-  }, [])
-
-  if (isLoading) {
-    return (
-      <Loading />
-    )
-  }
 
   return (
     <main className='py-20 flex flex-col gap-14  md:gap-24 lg:gap-16'>
