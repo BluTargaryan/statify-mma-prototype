@@ -6,6 +6,7 @@ import NavSearchComponent from '../../global/NavSearchComponent'
 import NavMenu from '../../global/NavMenu'
 import NavIcon from '../../../navicon.png'
 import Image from 'next/image'
+import Link from 'next/link';
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,15 +29,17 @@ const Nav = () => {
         isScrolled ? 'h-0 overflow-hidden' : 'h-14 md:h-16'
       }
       `}>
-        <Image src={NavIcon} alt='Statify-MMA'
-    width="0"
-    height="0"
-    sizes="100vw"
-    className="h-4 w-auto
-    md:h-7
+        <Link href='/'>
+            <Image src={NavIcon} alt='Statify-MMA'
+            width="0"
+            height="0"
+            sizes="100vw"
+            className="h-4 w-auto
+            md:h-7
     lg:h-8
-    "
-    />
+            "
+            />
+        </Link>
         <NavSocialsList />
       </div>
       <div className='relative w-full h-14 flex items-center justify-between border-b

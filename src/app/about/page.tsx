@@ -5,8 +5,10 @@ import Image from 'next/image'
 import AboutTextBox from '../components/About/AboutTextBox'
 import AboutImageTextBox from '../components/About/AboutImageTextBox'
 import { NavSocialsData } from '../inAppData/NavSocialsData'
+import { useRouter } from 'next/navigation'
 
 const About = () => {
+  const router = useRouter()
   return (
     <main className='py-24 flex flex-col gap-14 md:gap-20'>
         <section className='flex flex-col gap-11 items-center'>
@@ -73,7 +75,7 @@ const About = () => {
             ))}
           </div>
           
-          <button className='bg-text hover:bg-secondary active:bg-primary transition-all duration-300 text-bg hover:text-text active:text-bg rounded w-4/5 h-14 md:w-2/5 xl:w-1/5 xl:text-xl xl:h-14'>
+          <button onClick={() => router.push('/contact')} className='bg-text hover:bg-secondary active:bg-primary transition-all duration-300 text-bg hover:text-text active:text-bg rounded w-4/5 h-14 md:w-2/5 xl:w-1/5 xl:text-xl xl:h-14'>
             Reach out
           </button>
         </section>

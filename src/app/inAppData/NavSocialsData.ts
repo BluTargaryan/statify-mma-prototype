@@ -16,24 +16,24 @@ export const NavSocialsData: NavSocialItem[] = [
         id: 1,
         name: 'Twitter',
         icon: FaSquareXTwitter,
-        href: 'https://twitter.com/statify_mma'
+        href: 'https://x.com/StatifyMMA'
     },
     {
         id: 2,
         name: 'Instagram',
         icon: FaInstagram,
-        href: 'https://www.instagram.com/statify_mma/'
+        href: 'https://www.instagram.com/statifymma/'
     },
     {
         id: 3,
         name: 'TikTok',
         icon: FaTiktok,
-        href: 'https://www.tiktok.com/@statify_mma'
+        href: 'https://www.tiktok.com/@statifymma'
     },
     {
         id: 4,
         name: 'YouTube',
         icon: FaYoutube,
-        href: 'https://www.youtube.com/@statify_mma'
+        href: 'https://www.youtube.com/@StatifyMMA'
     }
 ]
