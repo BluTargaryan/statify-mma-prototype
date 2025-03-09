@@ -4,7 +4,6 @@ import React from 'react'
 import { notoSerif } from '@/app/utils'
 import LatestImage from './LatestImage'
 import { useRouter } from 'next/navigation'
-import Loading from '@/app/components/global/Loading'
 const LatestPost = () => {
   const router = useRouter()
   return (

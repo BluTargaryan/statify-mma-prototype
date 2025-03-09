@@ -1,7 +1,6 @@
 import React from 'react'
-import { FaLongArrowAltRight } from 'react-icons/fa'
 import { notoSerif } from '@/app/utils'
-import Link from 'next/link'
+
 import CategoryListPost from '../CategoryListPost'
 const CategoryPagesList = ({category}: {category: string}) => {
     return (

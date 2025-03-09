@@ -1,5 +1,5 @@
 import React from 'react'
-import { notoSerif } from '@/app/utils'
+
 
 const Loading = ({className}: {className?: string}) => {
   return (

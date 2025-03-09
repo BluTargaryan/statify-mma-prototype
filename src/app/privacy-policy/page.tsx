@@ -1,5 +1,4 @@
 import React from 'react'
-import { notoSerif } from '@/app/utils'
 
 const PrivacyPolicy = () => {
   return (
@@ -13,8 +12,8 @@ const PrivacyPolicy = () => {
         <div className='flex flex-col gap-6'>
           <div className='flex flex-col gap-3'>
             <h2 className='text-xl font-bold font-noto md:text-2xl'>GDPR Compliance</h2>
-            <p>The EU's General Data Protection Regulations (GDPR) take effect on May 25th, 2018. I agree with the spirit of these regulations and am willing to support all laws that enable internet users to remain sovereign individuals. I aspire to embrace privacy by design and, whenever possible, to not collect and store personally identifiable information. I only collect information that helps me deliver a better service and experience for you when browsing this site, reading my content, and engaging with my products.</p>
-            <p>At any time, you are free to ask me to unsubscribe you from my email newsletter or request your information to be exported and sent to you for review. Just reply to the email in question and include 'GDPR' in the subject line, as well as the specifics of your request. I'm here to help.</p>
+            <p>The EU&apos;s General Data Protection Regulations (GDPR) take effect on May 25th, 2018. I agree with the spirit of these regulations and am willing to support all laws that enable internet users to remain sovereign individuals. I aspire to embrace privacy by design and, whenever possible, to not collect and store personally identifiable information. I only collect information that helps me deliver a better service and experience for you when browsing this site, reading my content, and engaging with my products.</p>
+            <p>At any time, you are free to ask me to unsubscribe you from my email newsletter or request your information to be exported and sent to you for review. Just reply to the email in question and include &apos;GDPR&apos; in the subject line, as well as the specifics of your request. I&apos;m here to help.</p>
           </div>
 
           <div className='flex flex-col gap-3'>
@@ -27,7 +26,7 @@ const PrivacyPolicy = () => {
             <h2 className='text-xl font-bold font-noto md:text-2xl'>How Do We Use Your Information?</h2>
             <p>We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website, or use certain other site features in the following ways:</p>
             <ul className='list-disc pl-6 space-y-2'>
-              <li>To personalize the user's experience and to allow us to deliver the type of content and product offerings in which you are most interested.</li>
+              <li>To personalize the user&apos;s experience and to allow us to deliver the type of content and product offerings in which you are most interested.</li>
               <li>To improve our website in order to better serve you.</li>
               <li>To allow us to better service you in responding to your customer service requests.</li>
               <li>To administer a contest, promotion, survey, or other site feature.</li>
@@ -40,32 +39,32 @@ const PrivacyPolicy = () => {
           </div>
 
           <div className='flex flex-col gap-3'>
-            <h2 className='text-xl font-bold font-noto md:text-2xl'>Do We Use 'Cookies'?</h2>
-            <p>Yes. Cookies are small files that a site or its service provider transfers to your computer's hard drive through your Web browser (if you allow) that enables the site's or service provider's systems to recognize your browser and capture and remember certain information.</p>
-            <p>We use cookies to understand and save users' preferences for future visits and compile aggregate data about site traffic and site interaction to offer better site experiences and tools in the future.</p>
+            <h2 className='text-xl font-bold font-noto md:text-2xl'>Do We Use &apos;Cookies&apos;?</h2>
+            <p>Yes. Cookies are small files that a site or its service provider transfers to your computer&apos;s hard drive through your Web browser (if you allow) that enables the site&apos;s or service provider&apos;s systems to recognize your browser and capture and remember certain information.</p>
+            <p>We use cookies to understand and save users&apos; preferences for future visits and compile aggregate data about site traffic and site interaction to offer better site experiences and tools in the future.</p>
           </div>
 
           <div className='flex flex-col gap-3'>
             <h2 className='text-xl font-bold font-noto md:text-2xl'>We Use Cookies To:</h2>
             <ul className='list-disc pl-6 space-y-2'>
-              <li>Understand and save users’ preferences for future visits.</li>
+              <li>Understand and save users&apos; preferences for future visits.</li>
               <li>Compile aggregate data about site traffic and site interactions in order to offer better site experiences and tools in the future.</li>
             </ul>
-            <p>We may also use trusted third-party services that track this information on our behalf. You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies. You do this through your browser (like Internet Explorer) settings. Each browser is a little different, so look at your browser’s Help menu to learn the correct way to modify your cookies. If you disable cookies off, some features will be disabled. It won’t affect the users experience that make your site experience more efficient and some of our services will not function properly. However, you can still place orders via email.</p>
+            <p>We may also use trusted third-party services that track this information on our behalf. You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies. You do this through your browser (like Internet Explorer) settings. Each browser is a little different, so look at your browser&apos;s Help menu to learn the correct way to modify your cookies. If you disable cookies off, some features will be disabled. It won&apos;t affect the users experience that make your site experience more efficient and some of our services will not function properly. However, you can still place orders via email.</p>
           </div>
           <div className='flex flex-col gap-3'>
             <h2 className='text-xl font-bold font-noto md:text-2xl'>Google</h2>
-            <p>Google's advertising requirements can be summed up by Google's Advertising Principles. They are put in place to provide a positive experience for users. We may use Google AdSense Advertising on our website. Google, as a third party vendor, uses cookies to serve ads on our site. Google's use of the DART cookie enables it to serve ads to our users based on their visit to our site and other sites on the Internet. Users may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy.</p>
+            <p>Google&apos;s advertising requirements can be summed up by Google&apos;s Advertising Principles. They are put in place to provide a positive experience for users. We may use Google AdSense Advertising on our website. Google, as a third party vendor, uses cookies to serve ads on our site. Google&apos;s use of the DART cookie enables it to serve ads to our users based on their visit to our site and other sites on the Internet. Users may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy.</p>
           </div>
 
           <div className='flex flex-col gap-3'>
             <h2 className='text-xl font-bold font-noto md:text-2xl'>California Online Privacy Protection Act</h2>
-            <p>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law's reach stretches well beyond California to require a person or company in the United States (and conceivably the world) that operates websites collecting personally identifiable information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals with whom it is being shared, and to comply with this policy.</p>
+            <p>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law&apos;s reach stretches well beyond California to require a person or company in the United States (and conceivably the world) that operates websites collecting personally identifiable information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals with whom it is being shared, and to comply with this policy.</p>
             <p>According To CalOPPA We Agree To The Following:</p>
             <ul className='list-disc pl-6 space-y-2'>
               <li>Users can visit our site anonymously.</li>
               <li>Once this privacy policy is created, we will add a link to it on our home page, or as a minimum on the first significant page after entering our website.</li>
-              <li>Our Privacy Policy link includes the word 'Privacy', and can be easily be found on the page specified above.</li>
+              <li>Our Privacy Policy link includes the word &apos;Privacy&apos;, and can be easily be found on the page specified above.</li>
               <li>Users will be notified of any privacy policy changes on our Privacy Policy Page</li>
               <li>Users are able to change their personal information by emailing us</li>
             </ul>
@@ -78,12 +77,12 @@ const PrivacyPolicy = () => {
 
           <div className='flex flex-col gap-3'>
             <h2 className='text-xl font-bold font-noto md:text-2xl'>Does Our Site Allow Third Party Behavioral Tracking?</h2>
-            <p>It's also important to note that we allow third-party behavioral tracking.</p>
+            <p>It&apos;s also important to note that we allow third-party behavioral tracking.</p>
           </div>
 
           <div className='flex flex-col gap-3'>
             <h2 className='text-xl font-bold font-noto md:text-2xl'>COPPA (Children Online Privacy Protection Act)</h2>
-            <p>When it comes to the collection of personal information from children under 13, the Children's Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, the nation's consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services must do to protect children's privacy and safety online.</p>
+            <p>When it comes to the collection of personal information from children under 13, the Children&apos;s Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, the nation&apos;s consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services must do to protect children&apos;s privacy and safety online.</p>
             <p>We do not specifically market to children under 13.</p>
           </div>
 
@@ -124,7 +123,7 @@ const PrivacyPolicy = () => {
 
           <div className='flex flex-col gap-3'>
             <h2 className='text-xl font-bold font-noto md:text-2xl'>Agreeing To Terms</h2>
-            <p>If you do not agree to statifymma.com's privacy policy as posted here on this website, please do not consent to the setting of cookies and the collection and storage of your personally identifiable information.</p>
+            <p>If you do not agree to statifymma.com&apos;s privacy policy as posted here on this website, please do not consent to the setting of cookies and the collection and storage of your personally identifiable information.</p>
             <p>Your explicit consent indicates acceptance of this privacy policy in its entirety</p>
           </div>
           <div className='flex flex-col gap-3'>
