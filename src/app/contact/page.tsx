@@ -20,7 +20,7 @@ const ContactUs = () => {
         width={0}
         height={0}
         sizes='100vw'
-        className='w-full h-[552px] object-cover rounded
+        className='w-full h-[552px] object-cover object-center rounded
         md:w-1/3
         '
         />

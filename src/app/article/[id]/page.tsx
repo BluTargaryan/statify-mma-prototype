@@ -41,7 +41,7 @@ import RelatedPosts from '@/app/components/Article/RelatedPosts'
         width={0} 
         height={0} 
         sizes="100vw" 
-        className='w-full h-72 object-cover rounded md:h-[485px]' 
+        className='w-full h-72 object-cover object-center rounded md:h-[485px]' 
       />
       <section
         className="flex flex-col gap-8 md:gap-9  lg:w-4/5 lg:mx-auto"
