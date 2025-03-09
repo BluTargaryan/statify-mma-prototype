@@ -14,7 +14,7 @@ const About = () => {
         <section className='flex flex-col gap-11 items-center'>
           <h1 className='text-3xl font-bold font-noto text-center md:text-4xl'>About Statify-MMA</h1>
           <Image 
-              src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=2070"
+              src="https://images.unsplash.com/photo-1733951109839-f194ccd78cec"
               alt="MMA fighters in action" 
               width={0} 
               height={0} 
