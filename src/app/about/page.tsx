@@ -6,6 +6,7 @@ import AboutTextBox from '../components/About/AboutTextBox'
 import AboutImageTextBox from '../components/About/AboutImageTextBox'
 import { NavSocialsData } from '../inAppData/NavSocialsData'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const About = () => {
   const router = useRouter()
@@ -66,12 +67,11 @@ const About = () => {
         <section className='flex flex-col gap-9 items-center xl:w-4/5 xl:mx-auto xl:gap-12'>
           <div className='w-4/5 flex justify-between text-3xl md:w-2/5 xl:w-1/5'>
             {NavSocialsData.map((social) => (
-              <a key={social.id} href={social.href} target='_blank' rel='noopener noreferrer'>
+              <Link key={social.id} href={social.href} target='_blank' rel='noopener noreferrer'>
                 <social.icon 
                   className='hover:text-secondary active:text-primary transition-all duration-300'
-                  onClick={() => window.open(social.href, '_blank')}
                 />
-              </a>
+              </Link>
             ))}
           </div>
           
