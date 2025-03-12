@@ -34,7 +34,7 @@ export const posts: Post[] = [
         date: "2024-03-20",
         image: imageTemplate,
         content: `
-            <h1>New Lightweight Sensation Emerges: Breaking Down the Rise of MMA's Next Star</h1>
+            <h2>New Lightweight Sensation Emerges: Breaking Down the Rise of MMA's Next Star</h2>
             
             <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=2070" alt="Fighter celebrating victory in the octagon" class="article-image" />
             
