@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/global/sections/Nav";
 import Footer from "./components/global/sections/Footer";
+import { ContentfulProvider } from "./context/ContentfulContext";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -13,22 +15,19 @@ export const metadata: Metadata = {
   description: "Statify-MMA",
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} antialiased bg-bg text-text pt-28 px-4 box-border overflow-x-hidden
-          md:px-10 md:pt-32 lg:px-36`}
-      >
-        <Nav />
-        {children}
+      <body className={`${inter.variable} antialiased bg-bg text-text pt-28 px-4 box-border overflow-x-hidden
+          md:px-10 md:pt-32 lg:px-36`}>
+            <Nav />
+        <ContentfulProvider>
+          {children}
+        </ContentfulProvider>
         <Footer />
       </body>
     </html>

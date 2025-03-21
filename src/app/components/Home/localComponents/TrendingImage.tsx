@@ -2,15 +2,15 @@ import React from 'react'
 import Image from 'next/image'
 import { FaBolt, FaComments, FaHeart } from 'react-icons/fa6'
 
-const TrendingImage = () => {
+const TrendingImage = ({ trendingLikes, trendingCommentsCount, trendingImage, trendingTitle }: { trendingLikes: number, trendingCommentsCount: number, trendingImage: string, trendingTitle: string }) => {
     return (
         <div className='w-full h-72 relative 
         md:w-2/3
         lg:w-full
         '>
                 <Image 
-              src='https://images.unsplash.com/photo-1529165980561-f19d4acc4f3f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
-              alt='Statify-MMA'
+              src={`https:${trendingImage}`} 
+              alt={trendingTitle}
               width={0}
               height={0}
               sizes="100vw"
@@ -22,11 +22,11 @@ const TrendingImage = () => {
             <div className='absolute top-2 right-2 text-sm text-bg px-1  h-6 bg-text rounded flex gap-3 z-10'>
               <span className='flex gap-1 items-center'>
               <FaComments />
-              <p>100</p>
+              <p>{trendingCommentsCount}</p>
               </span>
               <span className='flex gap-1 items-center'>
               <FaHeart />
-              <p>100</p>
+              <p>{trendingLikes}</p>
               </span>
             </div>
           </div>

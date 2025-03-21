@@ -1,27 +1,25 @@
-
-import { createClient } from 'contentful';
+'use client';
 
 import LatestSection from "./components/Home/sections/LatestSection";
 import TrendingSection from "./components/Home/sections/TrendingSection";
 import TopPostsByCategorySection from "./components/Home/sections/TopPostsByCategorySection";
 import AdSpace from "./components/global/sections/AdSpace";
-import HomeCategoryList from "./components/Home/sections/HomeCategoryList";   
+import HomeCategoryList from "./components/Home/sections/HomeCategoryList";
+import { useContentful } from "./context/ContentfulContext";
 
-export async function getPosts() {
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || '',
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || '',
-  });
-  const data: any = await client.getEntries({
-    content_type: 'post',
-  });
-  console.log({
-    items: data.items[0].fields,
-  })
-}
+export default function PageContainer() {
+  const { posts, comments, loading, error } = useContentful();
 
-export default async function PageContainer() {
-await getPosts()
+  if (loading) console.log('Loading...');
+  if (error) console.log('Error: ', error);
+
+  if (posts.length > 0) {
+    console.log('Posts: ', posts);
+  }
+
+  if (comments.length > 0) {
+    console.log('Comments: ', comments);
+  }
 
   return (
     <main className="w-full overflow-x-hidden scroll-smooth flex flex-col gap-16 py-8">
@@ -31,8 +29,8 @@ await getPosts()
         <TopPostsByCategorySection />
       </div>
       <AdSpace />
-      <HomeCategoryList category='Events' />
-      <HomeCategoryList category='Lists' />
+      <HomeCategoryList category="Events" />
+      <HomeCategoryList category="Lists" />
     </main>
   );
 }

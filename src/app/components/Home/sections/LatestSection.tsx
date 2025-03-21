@@ -1,8 +1,17 @@
 import { notoSerif } from '@/app/utils'
 import React from 'react'
 import LatestPost from '../localComponents/LatestPost'
+import { useContentful } from '@/app/context/ContentfulContext'
 
 const LatestSection = () => {
+  const { posts, loading, error } = useContentful();
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error</div>;
+  if (error) console.log(error);
+
+
+
   return (
         <section className="w-full flex flex-col gap-6 
         md:gap-8
@@ -15,8 +24,12 @@ const LatestSection = () => {
          md:flex-row
          lg:flex-col
          '>
-          <LatestPost />
-          <LatestPost />
+          {posts && [...posts]
+            .sort((a, b) => new Date(b.sys.createdAt).getTime() - new Date(a.sys.createdAt).getTime())
+            .slice(0, 2)
+            .map((post: any, index: number) => (
+              <LatestPost key={index} post={post} />
+            ))}
          </div>
         </section>
 
