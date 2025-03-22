@@ -10,7 +10,7 @@ const LatestPost = ({ post }: { post: any }) => {
 
   return (
     <div className='w-full flex flex-col gap-3 cursor-pointer'
-    onClick={() => router.push('/article/1')}
+    onClick={() => router.push(`/article/${post.sys.id}`)}
     >
      
           <LatestImage 

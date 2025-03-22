@@ -13,7 +13,7 @@ const TrendingSection = () => {
   const trendingPost = posts.sort((a, b) => b.fields.likesCount - a.fields.likesCount).slice(0, 1);
 
   return (
-        <section className="w-full flex flex-col gap-6 lg:w-1/2">
+        <section className="w-full flex flex-col gap-6 xl:w-1/2">
          <h2 className={`${notoSerif.className} text-xl font-bold`}>
           Trending
          </h2>

@@ -6,6 +6,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 interface ContentfulContextType {
   posts: any[];
   comments: any[];
+  ads: any[];
   loading: boolean;
   error: string | null;
 }
@@ -13,6 +14,7 @@ interface ContentfulContextType {
 const ContentfulContext = createContext<ContentfulContextType>({
   posts: [],
   comments: [],
+  ads: [],
   loading: true,
   error: null,
 });
@@ -20,6 +22,7 @@ const ContentfulContext = createContext<ContentfulContextType>({
 export function ContentfulProvider({ children }: { children: React.ReactNode }) {
   const [posts, setPosts] = useState<any[]>([]);
   const [comments, setComments] = useState<any[]>([]);
+  const [ads, setAds] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,9 +41,14 @@ export function ContentfulProvider({ children }: { children: React.ReactNode }) 
         const commentsData = await client.getEntries({
           content_type: 'comment',
         });
+
+        const adsData = await client.getEntries({
+          content_type: 'ad',
+        });
         
         setPosts(postsData.items);
         setComments(commentsData.items);
+        setAds(adsData.items);
         setLoading(false);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to fetch posts and comments');
@@ -55,7 +63,7 @@ export function ContentfulProvider({ children }: { children: React.ReactNode }) 
         
 
   return (
-    <ContentfulContext.Provider value={{ posts, comments, loading, error }}>
+    <ContentfulContext.Provider value={{ posts, comments, ads, loading, error }}>
       {children}
     </ContentfulContext.Provider>
   );

@@ -6,19 +6,18 @@ import { useRouter } from 'next/navigation'
 
 const TrendingPost = ({ trendingPost }: { trendingPost: any }) => {
   const router = useRouter()
-  console.log(trendingPost);
   return (
     <div className='w-full flex flex-col gap-5 cursor-pointer
     md:flex-row
-    lg:flex-col
+    xl:flex-col
     '
-    onClick={() => router.push('/article/1')}
+    onClick={() => router.push(`/article/${trendingPost.sys.id}`)}
     >
        <TrendingImage trendingLikes={trendingPost.fields.likesCount} trendingCommentsCount={trendingPost.fields.commentsCount} trendingImage={trendingPost.fields.image.fields.file.url} trendingTitle={trendingPost.fields.title}/>
 
                     <div className='w-full flex flex-col gap-3 justify-center
                     md:w-1/3
-                    lg:w-full
+                    xl:w-full
                     '>
                         <div className='flex gap-4 text-xs md:text-sm'>
                         <p className='font-bold capitalize'>{trendingPost.fields.category}</p>
