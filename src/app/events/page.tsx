@@ -11,7 +11,7 @@ const Events = () => {
 
     return (
         <>
-        <CategoryPagesList category='Events' />
+        <CategoryPagesList category='events' />
             <AdSpace />
             </>
       )

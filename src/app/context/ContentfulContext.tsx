@@ -27,40 +27,44 @@ export function ContentfulProvider({ children }: { children: React.ReactNode }) 
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchData() {
       try {
+        setLoading(true);
         const client = createClient({
           space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || '',
           accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || '',
         });
         
-        const postsData = await client.getEntries({
-          content_type: 'post',
-        });
-
-        const commentsData = await client.getEntries({
-          content_type: 'comment',
-        });
-
-        const adsData = await client.getEntries({
-          content_type: 'ad',
-        });
+        const [postsData, commentsData, adsData] = await Promise.all([
+          client.getEntries({ content_type: 'post' }),
+          client.getEntries({ content_type: 'comment' }),
+          client.getEntries({ content_type: 'ad' })
+        ]);
         
-        setPosts(postsData.items);
-        setComments(commentsData.items);
-        setAds(adsData.items);
-        setLoading(false);
+        if (isMounted) {
+          setPosts(postsData.items);
+          setComments(commentsData.items);
+          setAds(adsData.items);
+        }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch posts and comments');
-        setLoading(false);
+        if (isMounted) {
+          setError(err instanceof Error ? err.message : 'An error occurred');
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     }
 
     fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
-
-
-        
 
   return (
     <ContentfulContext.Provider value={{ posts, comments, ads, loading, error }}>

@@ -5,20 +5,21 @@ import CategoryListPostImage from './CategoryListPostImage'
 import { notoSerif } from '@/app/utils'
 import { useRouter } from 'next/navigation'
 
-const CategoryListPost = () => {
+const CategoryListPost = ({post, comments}: {post: any, comments: any}) => {
     const router = useRouter()
+    const postComments = comments.filter((comment: any) => comment.fields.postId === post.sys.id)
     return (
         <div className='w-full flex flex-col gap-3 cursor-pointer'
-        onClick={() => router.push('/article/1')}
+        onClick={() => router.push(`/article/${post.sys.id}`)}
         >
-          <CategoryListPostImage />
+          <CategoryListPostImage image={post.fields.image.fields.file.url} likes={post.fields.likesCount} comments={postComments.length}/>
             
             <div className='flex flex-col gap-3 md:gap-2 lg:w-full'>
             <div className='flex gap-4 text-xs '>
-                            <p className='font-bold'>Category</p>
-                            <p>Mar 2021</p>
+                            <p className='font-bold capitalize'>{post.fields.category}</p>
+                            <p>{post.fields.publishedDate}</p>
                         </div>
-                        <h3 className={`${notoSerif.className} font-bold`}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</h3>
+                        <h3 className={`${notoSerif.className} font-bold`}>{post.fields.title}</h3>
             
             </div>
            

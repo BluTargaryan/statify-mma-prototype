@@ -3,7 +3,11 @@ import React from 'react'
 import { FaLongArrowAltRight } from 'react-icons/fa'
 import Link from 'next/link'
 import CategoryListPost from '../global/CategoryListPost'
-const RelatedPosts = () => {
+import { useContentful } from '@/app/context/ContentfulContext'
+const RelatedPosts = ({category}: {category: string}) => {
+  const {posts, comments} = useContentful()
+  const relatedPosts = posts.filter((post: any) => post.fields.category === category)
+
   return (
     <section className='w-full flex flex-col gap-8'>
         <div className='flex items-center justify-between'>
@@ -20,12 +24,9 @@ const RelatedPosts = () => {
    
              
     <div className='flex flex-col gap-5 md:grid md:grid-cols-3 xl:grid-cols-5'>
-             <CategoryListPost/>
-             <CategoryListPost/>
-             <CategoryListPost/>
-             <CategoryListPost/>
-             <CategoryListPost/>
-             <CategoryListPost/>
+      {relatedPosts.map((post: any) => (
+             <CategoryListPost key={post.sys.id} post={post} comments={comments}/>
+      ))}
              </div>
            
     </section>

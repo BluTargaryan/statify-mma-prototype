@@ -21,15 +21,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ContentfulProvider>
     <html lang="en">
       <body className={`${inter.variable} antialiased bg-bg text-text pt-28 px-4 box-border overflow-x-hidden
           md:px-10 md:pt-32 lg:px-36`}>
             <Nav />
-        <ContentfulProvider>
+        
           {children}
-        </ContentfulProvider>
+
         <Footer />
       </body>
     </html>
+    </ContentfulProvider>
   );
 }

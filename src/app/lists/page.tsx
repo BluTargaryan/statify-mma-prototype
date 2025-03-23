@@ -8,7 +8,7 @@ const Lists = () => {
     
   return (
     <>
-    <CategoryPagesList category='Lists' />
+    <CategoryPagesList category='lists' />
         <AdSpace />
         </>
   )
