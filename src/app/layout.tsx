@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "./components/global/sections/Nav";
 import Footer from "./components/global/sections/Footer";
 import { ContentfulProvider } from "./context/ContentfulContext";
+import { AuthProvider } from "./context/AuthContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,17 +22,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ContentfulProvider>
-    <html lang="en">
-      <body className={`${inter.variable} antialiased bg-bg text-text pt-28 px-4 box-border overflow-x-hidden
-          md:px-10 md:pt-32 lg:px-36`}>
+    <AuthProvider>
+      <ContentfulProvider>
+        <html lang="en">
+          <body className={`${inter.variable} antialiased bg-bg text-text pt-28 px-4 box-border overflow-x-hidden
+              md:px-10 md:pt-32 lg:px-36`}>
             <Nav />
-        
-          {children}
-
-        <Footer />
-      </body>
-    </html>
-    </ContentfulProvider>
+            {children}
+            <Footer />
+          </body>
+        </html>
+      </ContentfulProvider>
+    </AuthProvider>
   );
 }

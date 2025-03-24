@@ -2,14 +2,14 @@
 
 import React from 'react'
 import AdSpace from '../../components/global/sections/AdSpace'
-import CategoryPagesList from '../../components/global/sections/CategoryPagesList'
+import SearchList from '../../components/global/SearchList'
 import { useParams } from 'next/navigation';
 const QueryPage = () => {
     const params = useParams<{ query: string }>();
 
   return (
     <>
-    <CategoryPagesList category={params.query} />
+    <SearchList query={params.query} />
         <AdSpace />
         </>
   )

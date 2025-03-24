@@ -3,17 +3,18 @@ import { FaSearch } from "react-icons/fa";
 import NavSearchPostResults from './NavSearchPostResults';
 import NavSearchPagesResults from './NavSearchPagesResults';
 import Link from 'next/link';
-import { posts } from '@/app/inAppData/postData';
 import { Pages } from '@/app/inAppData/pages';
+import { useContentful } from '@/app/context/ContentfulContext';
 
 const NavSearchComponent = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const searchRef = useRef<HTMLDivElement>(null);
+  const {posts} = useContentful()
 
   const hasResults = () => {
     const hasMatchingPosts = posts.some(post => 
-      post.title.toLowerCase().includes(searchQuery.toLowerCase())
+      post.fields.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
     const hasMatchingPages = Pages.some(page => 
       page.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -60,8 +61,8 @@ const NavSearchComponent = () => {
             overflow-scroll scroll-smooth scrollbar-hide
             md:px-10 md:py-14 
             '>
-                <NavSearchPostResults category='Events' searchQuery={searchQuery} onItemClick={handleItemClick} />
-                <NavSearchPostResults category='Lists' searchQuery={searchQuery} onItemClick={handleItemClick} />
+                <NavSearchPostResults category='events' searchQuery={searchQuery} onItemClick={handleItemClick} />
+                <NavSearchPostResults category='lists' searchQuery={searchQuery} onItemClick={handleItemClick} />
                 <NavSearchPagesResults searchQuery={searchQuery} onItemClick={handleItemClick} />
             </div>
         )}

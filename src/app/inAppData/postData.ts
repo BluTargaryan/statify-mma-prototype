@@ -10,7 +10,7 @@ interface Post {
 
 interface Category {
     id: number;
-    name: 'Lists' | 'Events';
+    name: 'lists' | 'events';
 }
 
 export const imageTemplate = 'https://images.unsplash.com/photo-1529165980561-f19d4acc4f3f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
@@ -18,11 +18,11 @@ export const imageTemplate = 'https://images.unsplash.com/photo-1529165980561-f1
 export const categories: Category[] = [
     {
         id: 1,
-        name: 'Lists'
+        name: 'lists'
     },
     {
         id: 2,
-        name: 'Events'
+        name: 'events'
     }
 ]               
 

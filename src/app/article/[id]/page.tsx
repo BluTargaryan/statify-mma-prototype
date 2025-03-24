@@ -1,16 +1,17 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { notoSerif } from '@/app/utils'
 import Image from 'next/image'
 import CommentComp from '@/app/components/Article/CommentComp'
 import {FaComments} from 'react-icons/fa6'
-import { TiHeartOutline } from 'react-icons/ti'
+import { TiHeartOutline, TiHeart } from 'react-icons/ti'
 import RelatedPosts from '@/app/components/Article/RelatedPosts'
 import { useParams } from 'next/navigation'
 import { useContentful } from '@/app/context/ContentfulContext'
-
+import CheckInComp from '@/app/components/Article/CheckInComp'
 const Article = () => {
+  const [isLiked, setIsLiked] = useState(false)
   const {id} = useParams()
   const {posts, comments, loading, error} = useContentful()
   
@@ -42,6 +43,7 @@ const Article = () => {
 
   return (
     <main className='py-20 flex flex-col gap-14  md:gap-24 lg:gap-16'>
+      <CheckInComp />
       <section className='w-full flex flex-col gap-5 items-center lg:gap-6'>
         <div className='flex gap-4 text-xs md:text-sm'>
           <p className='font-bold capitalize'>{post.fields.category}</p>
@@ -57,8 +59,12 @@ const Article = () => {
           <FaComments className='text-base'/>
           </span>
           <span className='flex gap-3 items-center'>
-          <p>{post.fields.likes} likes</p>
-            <TiHeartOutline className='text-base'/>
+          <p>{post.fields.likesCount} likes</p>
+            {isLiked ? (
+              <TiHeart className='text-2xl text-red-500 cursor-pointer' onClick={() => setIsLiked(!isLiked)}/>
+            ) : (
+              <TiHeartOutline className='text-2xl cursor-pointer' onClick={() => setIsLiked(!isLiked)}/>
+            )}
           </span>
         </div>
       </section>
@@ -100,7 +106,7 @@ const Article = () => {
         </div>
         <CommentComp comments={postComments} />
       </section>
-      <RelatedPosts category={post.fields.category} />
+      <RelatedPosts category={post.fields.category} postId={post.sys.id}/>
     </main>
   )
 }

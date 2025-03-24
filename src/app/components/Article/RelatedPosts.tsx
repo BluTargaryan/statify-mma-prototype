@@ -4,7 +4,7 @@ import { FaLongArrowAltRight } from 'react-icons/fa'
 import Link from 'next/link'
 import CategoryListPost from '../global/CategoryListPost'
 import { useContentful } from '@/app/context/ContentfulContext'
-const RelatedPosts = ({category}: {category: string}) => {
+const RelatedPosts = ({category, postId}: {category: string, postId: string}) => {
   const {posts, comments} = useContentful()
   const relatedPosts = posts.filter((post: any) => post.fields.category === category)
 
@@ -24,7 +24,7 @@ const RelatedPosts = ({category}: {category: string}) => {
    
              
     <div className='flex flex-col gap-5 md:grid md:grid-cols-3 xl:grid-cols-5'>
-      {relatedPosts.map((post: any) => (
+      {relatedPosts.filter((post: any) => post.sys.id !== postId).map((post: any) => (
              <CategoryListPost key={post.sys.id} post={post} comments={comments}/>
       ))}
              </div>
