@@ -12,9 +12,9 @@ const CommentComp = ({comments}: {comments: any}) => {
         '>
             Add comment
         </button>
-        {comments?.map((comment: any) => (
+        {/* {comments?.map((comment: any) => (
             <CommentItem/>
-        ))}
+        ))} */}
         <span className='w-fit flex items-center gap-2 cursor-pointer group'>
             <p className='font-bold'>Load more comments</p>
             <IoReloadOutline className='group-hover:animate-spin transition-all duration-300 '/>
