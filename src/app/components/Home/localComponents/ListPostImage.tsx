@@ -4,7 +4,7 @@ import { FaComments, FaHeart } from 'react-icons/fa6'
 import { useContentful } from '@/app/context/ContentfulContext'
 
 const ListPostImage = ({ postImage, postId, postLikes }: { postImage: string, postId: string, postLikes: number }) => {
-  const { comments, loading, error } = useContentful();
+  const { comments} = useContentful();
 
   const postComments = comments.filter((comment: any) => comment.fields.postId === postId);
   return (

@@ -4,7 +4,7 @@ import { FaBolt, FaComments, FaHeart } from 'react-icons/fa6'
 import { useContentful } from '@/app/context/ContentfulContext'
 
 const TrendingListPostImage = ({ trendingPostImage, trendingPostLikes, trendingPostId }: { trendingPostImage: string, trendingPostLikes: number, trendingPostId: string }) => {
-  const { comments, loading, error } = useContentful();
+  const { comments} = useContentful();
 
   const trendingPostComments = comments.filter((comment: any) => comment.fields.postId === trendingPostId);
   return (

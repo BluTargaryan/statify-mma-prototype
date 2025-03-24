@@ -5,7 +5,7 @@ import { FaReply } from 'react-icons/fa6'
 import { TiHeartOutline } from 'react-icons/ti'
 import CommentReply from './CommentReply'
 import { useState } from 'react'
-const CommentItem = ({comment}: {comment: any}) => {
+const CommentItem = () => {
   const [isReplyOpen, setIsReplyOpen] = useState(false);
   return (
     <div className='w-full flex flex-col gap-2'>
