@@ -13,7 +13,7 @@ const CommentComp = ({comments}: {comments: any}) => {
             Add comment
         </button>
         {comments?.map((comment: any) => (
-            <CommentItem key={comment.sys.id} comment={comment} />
+            <CommentItem/>
         ))}
         <span className='w-fit flex items-center gap-2 cursor-pointer group'>
             <p className='font-bold'>Load more comments</p>
