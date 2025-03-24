@@ -13,10 +13,7 @@ import { useContentful } from '@/app/context/ContentfulContext'
 const Article = () => {
   const {id} = useParams()
   const {posts, comments, loading, error} = useContentful()
-  const post = posts.find((post: any) => post.sys.id === id)
-  const postComments = comments?.filter((comment: any) => comment.fields.postId === post?.sys.id)
-  const commentsCount = comments?.filter((comment: any) => comment.fields.postId === post?.sys.id)?.length || 0
-
+  
   if (loading) {
     return <div className="flex justify-center items-center min-h-screen">Loading...</div>
   }
@@ -25,8 +22,22 @@ const Article = () => {
     return <div className="flex justify-center items-center min-h-screen text-red-500">Error: {error}</div>
   }
 
+  if (!id) {
+    return <div className="flex justify-center items-center min-h-screen">Invalid article ID</div>
+  }
+
+  const post = posts.find((post: any) => post.sys.id === id)
+  
   if (!post) {
     return <div className="flex justify-center items-center min-h-screen">Post not found</div>
+  }
+
+  const postComments = comments?.filter((comment: any) => comment.fields.postId === post.sys.id) || []
+  const commentsCount = postComments.length
+
+  const content = post.fields.content.content
+  if (content) {
+    console.log(content)
   }
 
   return (
@@ -62,9 +73,31 @@ const Article = () => {
       <section
         className="flex flex-col gap-8 md:gap-9  lg:w-4/5 lg:mx-auto"
       >
-        {/* <div className="richtext-edits"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        /> */}
+        <div className="richtext-edits">
+          {content && content.map((block: any) => {
+            if (block.content) {
+              return block.content.map((item: any, index: number) => {
+                switch (block.nodeType) {
+                  case 'text':
+                    return <p key={item.value + index}>{item.value}</p>
+                  case 'heading-1':
+                    return <h1 key={item.value + index} className="text-3xl font-bold">{item.value}</h1>
+                  case 'heading-2':
+                    return <h2 key={item.value + index} className="text-2xl font-bold">{item.value}</h2>
+                  case 'heading-3':
+                    return <h3 key={item.value + index} className="text-xl font-bold">{item.value}</h3>
+                  case 'unordered-list':
+                    return <ul key={item.value + index} className="list-disc ml-5">{item.value}</ul>
+                  case 'ordered-list':
+                    return <ol key={item.value + index} className="list-decimal ml-5">{item.value}</ol>
+                  default:
+                    return <p key={item.value + index}>{item.value}</p>
+                }
+              })
+            }
+            return null
+          })}
+        </div>
         <CommentComp comments={postComments} />
       </section>
       <RelatedPosts category={post.fields.category} />
