@@ -5,7 +5,6 @@ import { notoSerif } from '@/app/utils'
 import Link from 'next/link'
 import { Checkbox } from "@/components/ui/checkbox"
 import { MdClose } from 'react-icons/md'
-import { createClient } from 'contentful-management'
 import { useAuth } from '@/app/context/AuthContext'
 
 const SubscribeForm = () => {
@@ -15,48 +14,48 @@ const SubscribeForm = () => {
   const [statusMessage, setStatusMessage] = useState('')
   const [showStatus, setShowStatus] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const { login, user } = useAuth()
+  const { login} = useAuth()
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email)
   }
 
-  const createUserInContentful = async (email: string) => {
-    const client = createClient({
-      accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_TOKEN || '',
-    })
+  // const createUserInContentful = async (email: string) => {
+  //   const client = createClient({
+  //     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_TOKEN || '',
+  //   })
 
-    const space = await client.getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || '')
-    const environment = await space.getEnvironment(process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT || '')
+  //   const space = await client.getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || '')
+  //   const environment = await space.getEnvironment(process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT || '')
 
-    // Check if user already exists
-    const entries = await environment.getEntries({
-      content_type: 'user',
-      'fields.email[match]': email,
-    })
+  //   // Check if user already exists
+  //   const entries = await environment.getEntries({
+  //     content_type: 'user',
+  //     'fields.email[match]': email,
+  //   })
 
-    if (entries.items.length > 0) {
-      // If user exists but not logged in, we'll just log them in
-      if (!user) {
-        return entries.items[0]
-      }
-      throw new Error('This email is already subscribed')
-    }
+  //   if (entries.items.length > 0) {
+  //     // If user exists but not logged in, we'll just log them in
+  //     if (!user) {
+  //       return entries.items[0]
+  //     }
+  //     throw new Error('This email is already subscribed')
+  //   }
 
-    // Create new user entry
-    const entry = await environment.createEntry('user', {
-      fields: {
-        email: {
-          'en-US': email
-        },
-      }
-    })
+  //   // Create new user entry
+  //   const entry = await environment.createEntry('user', {
+  //     fields: {
+  //       email: {
+  //         'en-US': email
+  //       },
+  //     }
+  //   })
 
-    // Publish the entry
-    await entry.publish()
-    return entry
-  }
+  //   // Publish the entry
+  //   await entry.publish()
+  //   return entry
+  // }
 
   const handleSubscribe = async () => {
     try {
@@ -84,7 +83,7 @@ const SubscribeForm = () => {
       }
 
       // Create user in Contentful and log them in
-      const userData = await createUserInContentful(email)
+      // const userData = await createUserInContentful(email)
       await login(email) // This will handle the session management
       
       setStatusMessage('Successfully subscribed and logged in!')
