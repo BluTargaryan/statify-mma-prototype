@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAuth } from '@/app/context/AuthContext'
 import { MdClose } from 'react-icons/md'
 
@@ -12,6 +12,20 @@ const CheckInComp = ({ isVisible, onClose }: CheckInCompProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [statusMessage, setStatusMessage] = useState('')
   const { login } = useAuth()
+
+  // Handle scroll behavior when component visibility changes
+  useEffect(() => {
+    if (isVisible) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isVisible])
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -46,7 +60,7 @@ const CheckInComp = ({ isVisible, onClose }: CheckInCompProps) => {
   if (!isVisible) return null
 
   return (
-    <section className='w-full h-screen flex items-center mt-28 bg-text/50 justify-center absolute top-0 left-0 z-10'>
+    <section className='w-full h-screen flex items-center z-50 bg-text/50 justify-center fixed top-0 left-0 z-10 pointer-events-auto'>
       <div className='w-4/5 h-80 bg-bg rounded-lg flex flex-col gap-4 items-center justify-center px-4 relative'>
         <MdClose 
           className='absolute top-4 right-4 text-2xl cursor-pointer hover:text-secondary transition-colors'

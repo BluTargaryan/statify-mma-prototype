@@ -91,7 +91,7 @@ const CommentComp = ({postId}: {postId: string}) => {
             <CommentItem 
               key={`comment-${comment.sys?.id || index}`} 
               comment={comment} 
-              user={users.find((user: any) => user.id === comment.userId)}
+              user={users.find((user: any) => user.sys.id === comment.fields.userId)}
             />
         ))}
         <span 
