@@ -8,7 +8,7 @@ const NavSocialsList = () => {
     '>
         {NavSocialsData.map((social) => (
             <a key={social.id} href={social.href} target='_blank' rel='noopener noreferrer'>
-                <social.icon className='hover:text-secondary active:text-primary transition-all duration-300 '
+                <social.icon className='hover:text-secondary active:text-primary transition-all duration-300 '  
                 onClick={() => window.open(social.href, '_blank')}
                 />
             </a>

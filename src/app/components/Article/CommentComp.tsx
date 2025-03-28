@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
 import CommentItem from './CommentItem'
 import { IoReloadOutline } from 'react-icons/io5'
 import { useContentful } from '@/app/context/ContentfulContext'
@@ -6,13 +6,31 @@ import CheckInComp from './CheckInComp'
 import { useAuth } from '@/app/context/AuthContext'
 import { createClient } from 'contentful-management'
 
-const CommentComp = ({postId}: {postId: string}) => {
+const CommentComp = React.memo(({postId}: {postId: string}) => {
   const {users, comments, refreshComments} = useContentful()
   const { user } = useAuth()
   const [visibleComments, setVisibleComments] = useState(5)
   const [showCheckIn, setShowCheckIn] = useState(false)
   const [commentText, setCommentText] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Memoize filtered comments
+  const postComments = useMemo(() => 
+    comments?.filter((comment: any) => comment.fields.postId === postId && !comment.fields.parentId) || [],
+    [comments, postId]
+  )
+
+  // Memoize visible comments
+  const visibleCommentsList = useMemo(() => 
+    postComments.slice(0, visibleComments),
+    [postComments, visibleComments]
+  )
+
+  // Memoize user lookup
+  const getUserForComment = useCallback((comment: any) => 
+    users.find((user: any) => user.sys.id === comment.fields.userId),
+    [users]
+  )
 
   const handleSubmitComment = async () => {
     if (!user) {
@@ -30,7 +48,6 @@ const CommentComp = ({postId}: {postId: string}) => {
         const space = await client.getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || '')
         const environment = await space.getEnvironment(process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT || '')
         
-        // Create new comment entry
         const entry = await environment.createEntry('comment', {
           fields: {
             content: {
@@ -49,11 +66,8 @@ const CommentComp = ({postId}: {postId: string}) => {
         })
 
         await entry.publish()
-        
-        // Refresh comments to get the latest data
         await refreshComments()
-        
-        setCommentText('') // Clear the textarea after successful submission
+        setCommentText('')
         
       } catch (error) {
         console.error('Error creating comment:', error)
@@ -63,8 +77,6 @@ const CommentComp = ({postId}: {postId: string}) => {
       }
     }
   }
-
-  const postComments = comments?.filter((comment: any) => comment.fields.postId === postId && !comment.fields.parentId) || []
 
   return (
     <div id='statify-comments' className='w-full flex flex-col gap-8'>
@@ -85,29 +97,29 @@ const CommentComp = ({postId}: {postId: string}) => {
         >
           {isSubmitting ? 'Posting...' : 'Add comment'}
         </button>
-        {postComments
-          .slice(0, visibleComments)
-          .map((comment: any, index: number) => (
+        <div className="space-y-4">
+          {visibleCommentsList.map((comment: any, index: number) => (
             <CommentItem 
               key={`comment-${comment.sys?.id || index}`} 
               comment={comment} 
-              user={users.find((user: any) => user.sys.id === comment.fields.userId)}
+              user={getUserForComment(comment)}
             />
-        ))}
-        <span 
-          className={`w-fit flex items-center gap-2 ${postComments.length > visibleComments ? 'cursor-pointer opacity-100' : 'cursor-not-allowed opacity-50'} group`}
-          onClick={() => {
-            if (postComments.length > visibleComments) {
-              setVisibleComments(prev => prev + 5)
-            }
-          }}
-        >
-          <p className='font-bold'>Load more comments</p>
-          <IoReloadOutline className={`${postComments.length > visibleComments ? 'group-hover:animate-spin' : ''} transition-all duration-300`}/>
-        </span>
+          ))}
+        </div>
+        {postComments.length > visibleComments && (
+          <span 
+            className="w-fit flex items-center gap-2 cursor-pointer group"
+            onClick={() => setVisibleComments(prev => prev + 5)}
+          >
+            <p className='font-bold'>Load more comments</p>
+            <IoReloadOutline className="group-hover:animate-spin transition-all duration-300"/>
+          </span>
+        )}
       </div>
     </div>
   )
-}
+})
+
+CommentComp.displayName = 'CommentComp'
 
 export default CommentComp

@@ -13,7 +13,7 @@ const AboutImageTextBox = ({title, text, reversed, image}: {title: string, text:
       />   
       <div className={`flex flex-col gap-2 ${reversed ? 'xl:items-start' : 'xl:items-end'} xl:w-full`}>
         <h3 className={`font-bold font-noto ${reversed ? 'xl:text-left' : 'xl:text-right'} xl:text-xl`}>{title}</h3>
-        <p className={`${reversed ? 'xl:text-left' : 'xl:text-right'}`}>{text}</p>
+        <p className={`${reversed ? 'xl:text-left' : 'xl:text-right'} md:text-lg`}>{text}</p>
       </div>
     </div>
   )

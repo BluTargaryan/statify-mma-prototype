@@ -11,10 +11,11 @@ const TrendingImage = ({ trendingLikes, trendingCommentsCount, trendingImage, tr
                 <Image 
               src={`https:${trendingImage}`} 
               alt={trendingTitle}
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="w-full h-72 object-cover rounded absolute top-0 left-0 "
+              width={800}
+              height={600}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
+              className="w-full h-72 object-cover rounded absolute top-0 left-0"
+              priority={true}
             />
             <div className='absolute top-2 left-2 text-xs w-6 h-6 bg-secondary rounded flex items-center justify-center z-10'>
               <FaBolt />
@@ -33,4 +34,4 @@ const TrendingImage = ({ trendingLikes, trendingCommentsCount, trendingImage, tr
       )
 }
 
-export default TrendingImage
+export default React.memo(TrendingImage)

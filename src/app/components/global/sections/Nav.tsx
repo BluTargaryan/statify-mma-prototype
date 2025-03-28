@@ -29,7 +29,7 @@ const Nav = () => {
         isScrolled ? 'h-0 overflow-hidden' : 'h-14 md:h-16'
       }
       `}>
-        <Link href='/'>
+        <Link href='/' >
             <Image src={NavIcon} alt='Statify-MMA'
             width="0"
             height="0"

@@ -1,20 +1,37 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "../globals.css";
 
-
-export const metadata: Metadata = {
-  title: "Lists-Statify-MMA",
-  description: "Lists-Statify-MMA",
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 };
 
-export default function RootLayout({
+export const metadata: Metadata = {
+  title: "MMA Lists | Statify-MMA",
+  description: "Explore curated lists of MMA fighters, events, and statistics. Discover rankings, top performers, and historical data.",
+  keywords: "MMA lists, fighter rankings, UFC lists, MMA statistics, combat sports rankings",
+  openGraph: {
+    title: "MMA Lists | Statify-MMA",
+    description: "Explore curated lists of MMA fighters, events, and statistics. Discover rankings, top performers, and historical data.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MMA Lists | Statify-MMA",
+    description: "Explore curated lists of MMA fighters, events, and statistics. Discover rankings, top performers, and historical data.",
+  },
+};
+
+export default function ListsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  
   return (
-    <>{children}</>
+    <div className="w-full min-h-screen">
+      {children}
+    </div>
   );
 }

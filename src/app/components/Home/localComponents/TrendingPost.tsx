@@ -3,9 +3,12 @@ import { notoSerif } from '@/app/utils'
 import React from 'react'
 import TrendingImage from './TrendingImage'
 import { useRouter } from 'next/navigation'
+import { useContentful } from '@/app/context/ContentfulContext'
 
 const TrendingPost = ({ trendingPost }: { trendingPost: any }) => {
   const router = useRouter()
+  const { comments } = useContentful();
+  const postComments = comments.filter((comment: any) => comment.fields.postId === trendingPost.sys.id);
   return (
     <div className='w-full flex flex-col gap-5 cursor-pointer
     md:flex-row
@@ -13,7 +16,7 @@ const TrendingPost = ({ trendingPost }: { trendingPost: any }) => {
     '
     onClick={() => router.push(`/article/${trendingPost.sys.id}`)}
     >
-       <TrendingImage trendingLikes={trendingPost.fields.likesCount} trendingCommentsCount={trendingPost.fields.commentsCount} trendingImage={trendingPost.fields.image.fields.file.url} trendingTitle={trendingPost.fields.title}/>
+       <TrendingImage trendingLikes={trendingPost.fields.likesCount} trendingCommentsCount={postComments.length} trendingImage={trendingPost.fields.image.fields.file.url} trendingTitle={trendingPost.fields.title}/>
 
                     <div className='w-full flex flex-col gap-3 justify-center
                     md:w-1/3

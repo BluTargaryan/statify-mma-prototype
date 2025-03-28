@@ -1,19 +1,66 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "./components/global/sections/Nav";
-import Footer from "./components/global/sections/Footer";
-import { ContentfulProvider } from "./context/ContentfulContext";
-import { AuthProvider } from "./context/AuthContext";
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+import Providers from './components/Providers';
 
+// Optimize font loading
 const inter = Inter({
-  variable: "--font-inter",
   subsets: ["latin"],
+  display: 'swap',
+  variable: "--font-inter",
 });
 
+// Lazy load components
+const Nav = dynamic(() => import("./components/global/sections/Nav"), {
+  ssr: true,
+  loading: () => (
+    <div className="fixed top-0 left-0 right-0 h-28 bg-bg animate-pulse" />
+  ),
+});
+
+const Footer = dynamic(() => import("./components/global/sections/Footer"), {
+  ssr: true,
+  loading: () => (
+    <div className="h-32 bg-bg animate-pulse" />
+  ),
+});
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
+// Enhanced metadata
 export const metadata: Metadata = {
-  title: "Statify-MMA",
-  description: "Statify-MMA",
+  title: "Statify-MMA | MMA News and Analysis",
+  description: "Your source for MMA news, analysis, and insights. Stay updated with the latest in mixed martial arts.",
+  keywords: "MMA, UFC, mixed martial arts, fighting, combat sports",
+  openGraph: {
+    title: "Statify-MMA | MMA News and Analysis",
+    description: "Your source for MMA news, analysis, and insights. Stay updated with the latest in mixed martial arts.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Statify-MMA | MMA News and Analysis",
+    description: "Your source for MMA news, analysis, and insights. Stay updated with the latest in mixed martial arts.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -22,17 +69,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <AuthProvider>
-      <ContentfulProvider>
-        <html lang="en">
-          <body className={`${inter.variable} antialiased bg-bg text-text pt-28 px-4 box-border overflow-x-hidden
-              md:px-10 md:pt-32 lg:px-36`}>
+    <html lang="en" className={inter.variable}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className="antialiased bg-bg text-text pt-28 px-4 box-border overflow-x-hidden md:px-10 md:pt-32 lg:px-36">
+        <Providers>
+          <Suspense fallback={<div className="fixed top-0 left-0 right-0 h-28 bg-bg animate-pulse" />}>
             <Nav />
-            {children}
+          </Suspense>
+          <main>{children}</main>
+          <Suspense fallback={<div className="h-32 bg-bg animate-pulse" />}>
             <Footer />
-          </body>
-        </html>
-      </ContentfulProvider>
-    </AuthProvider>
+          </Suspense>
+        </Providers>
+      </body>
+    </html>
   );
 }

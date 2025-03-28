@@ -80,7 +80,7 @@ const ContactForm = () => {
     '>
          <div className='flex flex-col gap-2 items-center md:items-end'>
    <h1 className='text-3xl font-bold font-noto'>Contact Us</h1>
-   <p className='text-gray-500'>Reach Out to Us</p>
+   <p>Reach Out to Us</p>
          </div>
          
          <div className='flex flex-col gap-2 items-center md:items-end'>

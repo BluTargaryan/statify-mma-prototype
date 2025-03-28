@@ -11,10 +11,11 @@ const LatestImage = ({ postImage, postId, postLikes }: { postImage: string, post
                 <Image 
               src={postImage} 
               alt='Statify-MMA'
-              width={0}
-              height={0}
-              sizes="100vw"
+              width={400}
+              height={300}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="w-full h-full object-cover rounded absolute top-0 left-0"
+              priority={false}
             />
             <div className='absolute top-2 left-2 text-xs text-bg px-1  h-6 bg-text rounded flex gap-3 z-10'>
               <span className='flex gap-1 items-center'>
@@ -30,4 +31,4 @@ const LatestImage = ({ postImage, postId, postLikes }: { postImage: string, post
       )
 }
 
-export default LatestImage
+export default React.memo(LatestImage)
