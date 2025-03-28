@@ -14,8 +14,8 @@ const AdSpace = dynamic(() => import("./components/global/sections/AdSpace"), {
 });
 
 export default function PageContainer() {
-  const {posts, loading, error } = useContentful();
-  console.log(posts)
+  const {loading, error } = useContentful();
+
 
   if (loading) return (
     <main className="w-full overflow-x-hidden scroll-smooth flex flex-col gap-16 py-8">

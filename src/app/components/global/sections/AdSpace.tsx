@@ -11,7 +11,6 @@ const AdSpace = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error</div>;
-  if (error) console.log(error);
 
   return (
     <section className='w-full py-14 flex items-center justify-center border-b '>

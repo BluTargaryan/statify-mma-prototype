@@ -17,7 +17,6 @@ const CommentItem = ({comment, user}: {comment: any, user: any}) => {
   const {comments, refreshComments} = useContentful()
   const { user: currentUser } = useAuth()
 
-  console.log(user)
   const handleSubmitReply = async () => {
     if (!currentUser) {
       setShowCheckIn(true)
