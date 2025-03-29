@@ -114,7 +114,7 @@ const CommentComp = React.memo(({postId}: {postId: string}) => {
             )}
           >
             <p className='font-bold'>
-              {visibleComments >= postComments.length ? 'Load more comments' : 'Hide comments'}
+              {visibleComments >= postComments.length ? 'Hide comments' : 'Load more comments'}
             </p>
             <IoReloadOutline className={`group-hover:animate-spin transition-all duration-300 ${
               visibleComments >= postComments.length ? 'rotate-180' : ''
