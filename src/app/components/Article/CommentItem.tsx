@@ -1,21 +1,34 @@
-import React from 'react'
+import React, { useState, useMemo } from 'react'
 import Image from 'next/image'
 import { imageTemplate } from '@/app/inAppData/postData'
 import { FaReply } from 'react-icons/fa6'
 import CommentReply from './CommentReply'
-import { useState } from 'react'
 import { useContentful } from '@/app/context/ContentfulContext'
 import { useAuth } from '@/app/context/AuthContext'
 import { createClient } from 'contentful-management'
 import CheckInComp from './CheckInComp'
+import { IoReloadOutline } from 'react-icons/io5'
 
 const CommentItem = ({comment, user}: {comment: any, user: any}) => {
   const [isReplyOpen, setIsReplyOpen] = useState(false);
   const [replyText, setReplyText] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showCheckIn, setShowCheckIn] = useState(false)
+  const [visibleReplies, setVisibleReplies] = useState(2)
   const {comments, refreshComments} = useContentful()
   const { user: currentUser } = useAuth()
+
+  // Memoize filtered replies
+  const replies = useMemo(() => 
+    comments?.filter((reply: any) => reply.fields.parentId === comment.sys.id) || [],
+    [comments, comment.sys.id]
+  )
+
+  // Memoize visible replies
+  const visibleRepliesList = useMemo(() => 
+    replies.slice(0, visibleReplies),
+    [replies, visibleReplies]
+  )
 
   const handleSubmitReply = async () => {
     if (!currentUser) {
@@ -33,7 +46,6 @@ const CommentItem = ({comment, user}: {comment: any, user: any}) => {
         const space = await client.getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || '')
         const environment = await space.getEnvironment(process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT || '')
         
-        // Create new reply entry
         const entry = await environment.createEntry('comment', {
           fields: {
             content: {
@@ -52,12 +64,9 @@ const CommentItem = ({comment, user}: {comment: any, user: any}) => {
         })
 
         await entry.publish()
-        
-        // Refresh comments to get the latest data
         await refreshComments()
-        
-        setReplyText('') // Clear the textarea after successful submission
-        setIsReplyOpen(false) // Close the reply section
+        setReplyText('')
+        setIsReplyOpen(false)
       } catch (error) {
         console.error('Error creating reply:', error)
         alert('Failed to post reply. Please try again.')
@@ -79,7 +88,9 @@ const CommentItem = ({comment, user}: {comment: any, user: any}) => {
           sizes="100vw" 
           className='w-7 h-7 object-cover rounded-full' 
         />
-        <h2 className='font-bold font-noto'>{user.fields.email.split('@')[0]}</h2>
+        <h2 className='font-bold font-noto'>
+          {user?.fields?.email ? user.fields.email.split('@')[0] : 'Anonymous User'}
+        </h2>
       </span>
       <div className='w-full pl-11 flex flex-col gap-5'>
         <div className='flex flex-col gap-1'>
@@ -114,9 +125,26 @@ const CommentItem = ({comment, user}: {comment: any, user: any}) => {
             </button>
           </>
         )}
-        {comment?.sys?.id && comments?.filter((reply: any) => reply.fields.parentId === comment.sys.id).map((reply: any) => (
-          <CommentReply key={reply.sys.id} comment={reply} user={user} />
-        ))}
+        <div className="space-y-4">
+          {visibleRepliesList.map((reply: any) => (
+            <CommentReply key={reply.sys.id} comment={reply} user={user} />
+          ))}
+        </div>
+        {replies.length > 0 && (
+          <span 
+            className="w-fit flex items-center gap-2 cursor-pointer group"
+            onClick={() => setVisibleReplies(prev => 
+              prev >= replies.length ? 2 : prev + 3
+            )}
+          >
+            <p className='font-bold'>
+              {visibleReplies >= replies.length ? 'Hide replies' : 'Load more replies'}
+            </p>
+            <IoReloadOutline className={`group-hover:animate-spin transition-all duration-300 ${
+              visibleReplies >= replies.length ? 'rotate-180' : ''
+            }`}/>
+          </span>
+        )}
       </div>
     </div>
   )

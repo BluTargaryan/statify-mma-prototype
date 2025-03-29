@@ -106,13 +106,19 @@ const CommentComp = React.memo(({postId}: {postId: string}) => {
             />
           ))}
         </div>
-        {postComments.length > visibleComments && (
+        {postComments.length > 5 && (
           <span 
             className="w-fit flex items-center gap-2 cursor-pointer group"
-            onClick={() => setVisibleComments(prev => prev + 5)}
+            onClick={() => setVisibleComments(prev => 
+              prev >= postComments.length ? 5 : prev + 5
+            )}
           >
-            <p className='font-bold'>Load more comments</p>
-            <IoReloadOutline className="group-hover:animate-spin transition-all duration-300"/>
+            <p className='font-bold'>
+              {visibleComments >= postComments.length ? 'Load more comments' : 'Hide comments'}
+            </p>
+            <IoReloadOutline className={`group-hover:animate-spin transition-all duration-300 ${
+              visibleComments >= postComments.length ? 'rotate-180' : ''
+            }`}/>
           </span>
         )}
       </div>

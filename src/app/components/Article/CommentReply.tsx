@@ -15,7 +15,9 @@ const CommentReply = ({comment, user}: {comment: any, user: any}) => {
           sizes="100vw" 
           className='w-7 h-7 object-cover rounded-full' 
         />
-        <h2 className='font-bold font-noto'>{user.fields.email.split('@')[0]}</h2>
+        <h2 className='font-bold font-noto'>
+          {user?.fields?.email ? user.fields.email.split('@')[0] : 'Anonymous User'}
+        </h2>
       </span>
       <div className='w-full pl-11 flex flex-col gap-5'>
         <div className='flex flex-col gap-1'>
