@@ -73,6 +73,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="canonical" href="https://statify-mma.vercel.app" />
       </head>
       <body className="antialiased bg-bg text-text pt-28 px-4 box-border overflow-x-hidden md:px-10 md:pt-32 lg:px-36">
         <Providers>
