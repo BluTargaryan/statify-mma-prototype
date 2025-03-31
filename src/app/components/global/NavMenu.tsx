@@ -61,7 +61,7 @@ const NavMenu = () => {
         overflow-y-scroll scroll-smooth scrollbar-hide
         md:py-20 md:gap-16 md:text-xl
         '>
-            {Pages.slice(0, 5).map((page) => (
+            {Pages.slice(0, 6).map((page) => (
                 <Link 
                     href={page.href} 
                     key={page.id}
